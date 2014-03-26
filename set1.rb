@@ -20,10 +20,9 @@ module Set1
 
 # Given an array of numbers and the number x, find out if there are
 # two numbers in the array that add up to x (just return true or false)
+  # O(n^2)
   def self.find_sum_2(array, sum = 0)
-    #  1. for each number in array, diff = array[i] - sum
-    #  2. then check if each number in the array (including at i) is
-    # equal to diff
+
     diff = 0
 
     for i in 0...array.length
@@ -36,7 +35,22 @@ module Set1
     end
     return false
   end
-
+# O(n^3)
   def self.find_sum_3(array)
+    diff = 0
+    sum = 0
+    for i in 0...array.length
+      diff = sum - array[i]
+      for n in 0...array.length
+        diff2 = diff - array[n]
+        for k in 0...array.length
+          if array[k] == diff2
+            return true
+          end
+        end
+      end
+    end
+    return false
+
   end
 end
